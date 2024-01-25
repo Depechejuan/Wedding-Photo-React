@@ -31,10 +31,12 @@ function Form() {
         <input type="file" accept="image/*" onChange={handleImageSelect} />
         <input type="file" accept="image/*" onChange={handleImageSelect} />
         <input type="file" accept="image/*" onChange={handleImageSelect} />
+        <p>Prueba este también</p>
+        <input type="file" accept="image/*" capture="camera" />
         <h3>Imágenes Subidas:</h3>
         <ul>
         {selectedImages.map((image, i) => (
-            <li key={i}>{image.name}</li>
+            <li key={i.id}>{image.name}</li>
         ))}
         </ul>
     </form>
