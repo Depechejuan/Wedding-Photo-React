@@ -5,12 +5,12 @@ function Form() {
     const [mediaStream, setMediaStream] = useState(null);
 
     const openCamera = async () => {
-    try {
-        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-        setMediaStream(stream);
-    } catch (error) {
-        console.error('Error al acceder a la cámara:', error);
-    }
+        try {
+            const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+            setMediaStream(stream);
+        } catch (error) {
+            console.error('Error al acceder a la cámara:', error);
+        }
     };
 
     const handleImageSelect = (e) => {
@@ -20,20 +20,25 @@ function Form() {
         }
     };
 
-    return(
-        <form className="input-form">
-            <button onClick={openCamera}>Foto 1</button>
-            <input type="file" accept="image/*" onChange={handleImageSelect} />
-            <input type="file" accept="image/*" onChange={handleImageSelect} />
-            <input type="file" accept="image/*" onChange={handleImageSelect} />
-            <h3>Imágenes Subidas:</h3>
-            <ul>
-            {selectedImages.map((image, i) => (
-                <li key={i.id}>{image.name}</li>
-            ))}
-            </ul>
-        </form>
-        );
+    const handleCameraButtonClick = (e) => {
+        e.preventDefault(); // Prevenir el envío por defecto del formulario
+        openCamera();
+    };
+
+    return (
+    <form className="input-form">
+        <button onClick={handleCameraButtonClick} type="button">Foto 1</button>
+        <input type="file" accept="image/*" onChange={handleImageSelect} />
+        <input type="file" accept="image/*" onChange={handleImageSelect} />
+        <input type="file" accept="image/*" onChange={handleImageSelect} />
+        <h3>Imágenes Subidas:</h3>
+        <ul>
+        {selectedImages.map((image, i) => (
+            <li key={i}>{image.name}</li>
+        ))}
+        </ul>
+    </form>
+    );
 }
 
-export default Form
+export default Form;
