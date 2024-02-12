@@ -5,9 +5,9 @@ function UploadPhotos() {
     return (
         <>
             <h1>
-                Retro Photo for Weddings
+                ¡SUBE SÓLO 3 FOTOS!
             </h1>
-            <p>Take first picture</p>
+
             <Form />
         </>
     )

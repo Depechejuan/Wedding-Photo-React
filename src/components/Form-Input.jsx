@@ -20,13 +20,10 @@ function Form() {
                 const formData = new FormData();
                 formData.append('photo', file);
                 await sendPhoto(formData);
-                // Obtén el índice del input actual
                 const inputIndex = parseInt(e.target.id.split('-')[1]);
-                // Marca el input como inhabilitado en el LocalStorage
                 const disabledInputs = JSON.parse(localStorage.getItem('disabledInputs')) || {};
                 disabledInputs[inputIndex] = true;
                 localStorage.setItem('disabledInputs', JSON.stringify(disabledInputs));
-                // Inhabilita el input actual
                 e.target.disabled = true;
             } catch (error) {
                 console.error('Error al enviar la imagen:', error);

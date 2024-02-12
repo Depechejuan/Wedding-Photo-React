@@ -11,10 +11,10 @@ function UploadPhotos() {
     return (
         <>
             <h1>
-                Retro Photo for Weddings
+                ¡Bienvenidos a la Boda!
             </h1>
-            <p>Take first picture</p>
-            <p>IMPORTANTE: Foto que hagas, foto que se sube. ¡Ahí está la mágia!</p>
+            <p>Pincha en &quot;Seleccionar Archivo&quot;, haz la foto, ¡y listo!</p>
+            <p>IMPORTANTE: Foto que hagas, foto que se sube. ¡No hay vuelta atrás!. ¡Ahí está la mágia!</p>
             <Form />
         </>
     )
