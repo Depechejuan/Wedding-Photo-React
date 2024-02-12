@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 function UploadPhotos() {
     // const wedding = uuidv4();
     const user = uuidv4();
-    createGuest("JUANGY", user)
+    createGuest("WEDDING", user)
 
     
     return (
