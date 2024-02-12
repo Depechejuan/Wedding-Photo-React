@@ -3,11 +3,9 @@ import createGuest from "../services/create-guest";
 import { v4 as uuidv4 } from 'uuid';
 
 function UploadPhotos() {
-    const wedding = uuidv4();
-    console.log(wedding);
+    // const wedding = uuidv4();
     const user = uuidv4();
-    console.log(user);
-    createGuest(wedding, user)
+    createGuest("JUANGY", user)
 
     
     return (
