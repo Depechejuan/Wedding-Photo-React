@@ -1,8 +1,6 @@
-function createGuest() {
-    const wedding = null;
-    const user = null;
-    localStorage.setItem("WEDDING", wedding);
-    localStorage.setItem("USER_WEDDING", user);
+function createGuest(wedding, user) {
+    localStorage.setItem("WEDDING", wedding || null);
+    localStorage.setItem("USER_WEDDING", user || null);
 }
 
 export default createGuest;

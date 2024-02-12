@@ -1,27 +1,45 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';import sendPhoto from '../services/send-photo';
 
 function Form() {
-    const [selectedImages, setSelectedImages] = useState([]);
+    const [formDisabled, setFormDisabled] = useState(false);
+    
+    useEffect(() => {
+        // Al cargar la página, verifica el LocalStorage para inhabilitar los inputs que ya se han utilizado
+        const disabledInputs = JSON.parse(localStorage.getItem('disabledInputs')) || {};
+        for (let i = 0; i < 3; i++) {
+            if (disabledInputs[i]) {
+                document.getElementById(`input-${i}`).disabled = true;
+            }
+        }
+    }, []);
 
-
-    const handleImageSelect = (e) => {
+    const handleImageSelect = async (e) => {
         const file = e.target.files[0];
         if (file) {
-            setSelectedImages([...selectedImages, file]);
+            try {
+                const formData = new FormData();
+                formData.append('photo', file);
+                await sendPhoto(formData);
+                // Obtén el índice del input actual
+                const inputIndex = parseInt(e.target.id.split('-')[1]);
+                // Marca el input como inhabilitado en el LocalStorage
+                const disabledInputs = JSON.parse(localStorage.getItem('disabledInputs')) || {};
+                disabledInputs[inputIndex] = true;
+                localStorage.setItem('disabledInputs', JSON.stringify(disabledInputs));
+                // Inhabilita el input actual
+                e.target.disabled = true;
+            } catch (error) {
+                console.error('Error al enviar la imagen:', error);
+            }
         }
     };
 
-
-
     return (
-    <form className="input-form">
-        {/* Este es el que funciona, ahora falta enfrentarse a quitar el preview */}
-        <input type="file" accept="image/*" capture="camera" onChange={handleImageSelect} />
-        <input type="file" accept="image/*" capture="camera" onChange={handleImageSelect} />
-        <input type="file" accept="image/*" capture="camera" onChange={handleImageSelect} />
-
-
-    </form>
+        <form className="input-form">
+            <input id="input-0" type="file" accept="image/*" capture="camera" onChange={handleImageSelect} />
+            <input id="input-1" type="file" accept="image/*" capture="camera" onChange={handleImageSelect} />
+            <input id="input-2" type="file" accept="image/*" capture="camera" onChange={handleImageSelect} />
+        </form>
     );
 }
 
