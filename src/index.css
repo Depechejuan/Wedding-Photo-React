@@ -21,6 +21,10 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    background-image: url("./assets/jarron.png");
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: 200px;
 }
 
 h1 {

@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';import sendPhoto from '../services/send-photo';
+import { useState, useEffect } from 'react';
+import sendPhoto from '../services/send-photo';
 
 function Form() {
     const [formDisabled, setFormDisabled] = useState(false);
