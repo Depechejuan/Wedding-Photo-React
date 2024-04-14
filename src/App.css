@@ -12,3 +12,10 @@
     justify-content: center;
     gap: 10px;
 }
+
+.desc {
+    margin: 0;
+}
+.container {
+    margin-top: 3rem;
+}
