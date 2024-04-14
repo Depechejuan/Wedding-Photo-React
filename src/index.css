@@ -23,7 +23,7 @@ body {
     flex-direction: column;
     background-image: url("./assets/jarron.png");
     background-repeat: no-repeat;
-    background-position: right;
+    background-position: right bottom;
     background-size: 200px;
 }
 
