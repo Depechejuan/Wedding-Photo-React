@@ -19,3 +19,15 @@
 .container {
     margin-top: 3rem;
 }
+
+.instructions {
+    margin-bottom: 2rem;
+}
+
+.instructions > p {
+    margin-top: 0.4rem;
+}
+
+.bottom {
+    margin-top: 3rem;
+}
