@@ -15,6 +15,7 @@
 
 .desc {
     margin: 0;
+    font-size: 1.3rem;
 }
 .container {
     margin-top: 3rem;
@@ -30,5 +31,7 @@
 
 .bottom {
     margin-top: 3rem;
+}
+.capitalize {
     text-transform: capitalize;
 }
