@@ -14,17 +14,17 @@ function UploadPhotos() {
                 const response = await fetch(`${host}/check`);
                 const data = await response.json();
                 if (data.success) {
-                setIsSuccess(true);
+                    setIsSuccess(true);
                 }
                 setIsLoading(false);
             } catch (error) {
                 console.error('Error fetching data:', error);
                 setIsLoading(false);
             }
-            };
+        };
         
-            fetchData();
-        }, []);
+        fetchData();
+    }, []);
 
     return (
         <>
@@ -35,15 +35,22 @@ function UploadPhotos() {
                 <p>Te encargamos la importante misión de hacer fotos durante el convite y la fiesta para crear un álbum entre todos. Lo único que tienes que hacer es:</p>
                 <p>Pinchar en &quot;Seleccionar Archivo&quot;, hacer la foto, confirmar ¡Y listo!</p>
                 <p><strong>IMPORTANTE</strong>: Foto que hagas, foto que se sube y no hay vuelta atrás. ¡Ahí está la magia!</p>
+                <p>No te preocupes, cuando uses los 5 botones, todos volverán a activarse de nuevo</p>
             </div>
             {}
-            <Form />
+            {isLoading ? (
+                <>
+                    <p>Cargando los botones...</p>
+                    <progress />
+                </>
+            ) : (
+                isSuccess && <Form />
+            )}
             <Warning />
             <div className="bottom">
                 <p>Gracias por acompañarnos en este día tan especial para nosotros.</p>
                 <p className="capitalize">Juan y Ángela</p>
             </div>
-
         </>
     )
 }
