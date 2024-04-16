@@ -44,7 +44,7 @@ function UploadPhotos() {
                     <progress />
                 </>
             ) : (
-                isSuccess && <Form />
+                isSuccess ? <Form /> : <progress />
             )}
             <Warning />
             <div className="bottom">
