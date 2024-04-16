@@ -1,7 +1,30 @@
 import Form from "../components/Form-Input";
 import Warning from "../components/Warning";
+import { useState, useEffect } from 'react';
+const host = import.meta.env.VITE_API_HOST;
 
 function UploadPhotos() {
+    const [isLoading, setIsLoading] = useState(true);
+    const [isSuccess, setIsSuccess] = useState(false);
+
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch(`${host}/check`);
+                const data = await response.json();
+                if (data.success) {
+                setIsSuccess(true);
+                }
+                setIsLoading(false);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+                setIsLoading(false);
+            }
+            };
+        
+            fetchData();
+        }, []);
 
     return (
         <>
@@ -9,9 +32,9 @@ function UploadPhotos() {
                 ¡Bienvenido a la JuangyBoda!
             </h1>
             <div className="instructions">
-                <p>Es tu misión hacer las fotos del banquete de boda para poder crear un álbum entre todos. Lo único que tienes que hacer es:</p>
+                <p>Te encargamos la importante misión de hacer fotos durante el convite y la fiesta para crear un álbum entre todos. Lo único que tienes que hacer es:</p>
                 <p>Pinchar en &quot;Seleccionar Archivo&quot;, hacer la foto, confirmar ¡Y listo!</p>
-                <p><strong>IMPORTANTE</strong>: Foto que hagas, foto que se sube y no hay vuelta atrás. ¡Ahí está la mágia!</p>
+                <p><strong>IMPORTANTE</strong>: Sólo se pueden hacer cuatro fotos, así que foto que hagas, foto que se sube y no hay vuelta atrás. ¡Ahí está la magia!</p>
             </div>
             <Form />
             <Warning />

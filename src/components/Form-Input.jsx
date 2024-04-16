@@ -38,6 +38,7 @@ function Form() {
             <input id="input-1" type="file" accept="image/*" capture="camera" onChange={handleImageSelect} />
             <input id="input-2" type="file" accept="image/*" capture="camera" onChange={handleImageSelect} />
             <input id="input-3" type="file" accept="image/*" capture="camera" onChange={handleImageSelect} />
+            <input id="input-4" type="file" accept="image/*" capture="camera" onChange={handleImageSelect} />
         </form>
     );
 }

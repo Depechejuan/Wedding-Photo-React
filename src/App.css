@@ -30,4 +30,5 @@
 
 .bottom {
     margin-top: 3rem;
+    text-transform: capitalize;
 }
