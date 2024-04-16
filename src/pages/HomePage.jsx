@@ -7,7 +7,6 @@ function UploadPhotos() {
     const [isLoading, setIsLoading] = useState(true);
     const [isSuccess, setIsSuccess] = useState(false);
 
-    const count = 0;
 
     useEffect(() => {
         const fetchData = async () => {

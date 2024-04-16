@@ -3,16 +3,23 @@ import sendPhoto from '../services/send-photo';
 
 function Form() {
     const [formDisabled, setFormDisabled] = useState(false);
+    const [count, setCount] = useState(0); 
     
     useEffect(() => {
-        // Al cargar la página, verifica el LocalStorage para inhabilitar los inputs que ya se han utilizado
         const disabledInputs = JSON.parse(localStorage.getItem('disabledInputs')) || {};
-        for (let i = 0; i < 3; i++) {
+        let newCount = 0;
+        for (let i = 0; i < 5; i++) {
             if (disabledInputs[i]) {
                 document.getElementById(`input-${i}`).disabled = true;
+                setCount(newCount++);
+            }
+            if (newCount === 5) {
+                setCount(0);
+                localStorage.removeItem("disabledInputs");
             }
         }
     }, []);
+
 
     const handleImageSelect = async (e) => {
         const file = e.target.files[0];
@@ -26,6 +33,19 @@ function Form() {
                 disabledInputs[inputIndex] = true;
                 localStorage.setItem('disabledInputs', JSON.stringify(disabledInputs));
                 e.target.disabled = true;
+    
+                setCount(prevCount => {
+                    const newCount = prevCount + 2;
+                    if (newCount === 5) {
+                        for (let i = 0; i < 5; i++) {
+                            document.getElementById(`input-${i}`).disabled = false;
+                        }
+                        setCount(0);
+                        localStorage.removeItem("disabledInputs");
+                    }
+                    console.log("New Count: ", newCount);
+                    return newCount;
+                });
             } catch (error) {
                 console.error('Error al enviar la imagen:', error);
             }
