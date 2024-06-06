@@ -38,7 +38,7 @@ function UploadPhotos() {
                 <p><strong>IMPORTANTE</strong>: Foto que hagas, foto que se sube y no hay vuelta atrás. ¡Ahí está la magia!</p>
                 <p>No te preocupes, cuando uses los 5 botones, todos volverán a activarse de nuevo</p>
             </div>
-            {}
+
             {isLoading ? (
                 <>
                     <p>Cargando los botones...</p>
@@ -50,7 +50,16 @@ function UploadPhotos() {
             <div className="instructions2">
                 Si ya has hecho una foto fuera de la aplicación y la quieres subir, usa este formulario. ¡Se paciente! Puede ser que no funcione tan rápido :)
             </div>
-            <FormUpload />
+
+            {isLoading ? (
+                <>
+                    <p>Cargando los botones...</p>
+                    <progress />
+                </>
+            ) : (
+                isSuccess ? <FormUpload /> : <progress />
+            )}
+            
             <Warning />
             <div className="bottom">
                 <p>Gracias por acompañarnos en este día tan especial para nosotros.</p>
