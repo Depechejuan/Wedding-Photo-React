@@ -1,4 +1,5 @@
 import Form from "../components/Form-Input";
+import FormUpload from "../components/Form-Second";
 import Warning from "../components/Warning";
 import { useState, useEffect } from 'react';
 const host = import.meta.env.VITE_API_HOST;
@@ -46,6 +47,10 @@ function UploadPhotos() {
             ) : (
                 isSuccess ? <Form /> : <progress />
             )}
+            <div className="instructions2">
+                Si ya has hecho una foto fuera de la aplicación y la quieres subir, usa este formulario. ¡Se paciente! Puede ser que no funcione tan rápido :)
+            </div>
+            <FormUpload />
             <Warning />
             <div className="bottom">
                 <p>Gracias por acompañarnos en este día tan especial para nosotros.</p>
