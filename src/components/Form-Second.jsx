@@ -25,7 +25,6 @@ function FormUpload() {
             <input id="input-b" type="file" accept="image/*" onChange={handleImageSelect} />
             <input id="input-c" type="file" accept="image/*" onChange={handleImageSelect} />
             <input id="input-d" type="file" accept="image/*" onChange={handleImageSelect} />
-            <input id="input-e" type="file" accept="image/*" onChange={handleImageSelect} />
         </form>
     );
 }
